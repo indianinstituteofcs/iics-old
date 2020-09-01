@@ -5,24 +5,31 @@ html
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='description', content='')
-    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
     link(rel='stylesheet', href='/css/style.css')
 
     div    
       nav.navbar.navbar-expand-lg.navbar-light.bg-white
         a(href="/") 
           img.navbar-brand(src="images/Logo.png" width="200px;")
-          ul.navbar-nav.mr-auto
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbar', aria-controls='navbar', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+
+        #navbar.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto 
+            li.nav-item.active.mr-4
+              a.btn.btn-outline-dark.nav-link(href='/class') The Class
             li.nav-item.active
-              a.nav-link(href='/class') The Class
-            li.nav-item.active
-             a.nav-link(href='#') Register
+              a.btn.btn-outline-dark.nav-link(href='#') Register
           ul.navbar-nav.float-right
-           li.nav-item.active
-               a.nav-link(href='#') Login
+            li.nav-item.active
+               a.btn.btn-light.nav-link(href='/login') Login
 
   body
     block content
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js')
     div
       footer.footer
         p.m-4  @ IICS 2020
