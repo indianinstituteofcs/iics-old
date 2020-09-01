@@ -2,6 +2,27 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+    
+    nav.navbar.navbar-expand-lg.navbar-light.bg-white
+      a(href="#") 
+        img.navbar-brand(src="images/Logo.png" width="200px;")
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/class') The Class
+          li.nav-item.active
+            a.nav-link(href='#') Register
+        ul.navbar-nav.float-right
+          li.nav-item.active
+            a.nav-link(href='#') Login
+
   body
     block content
+    .container
+     footer.footer
+        | @ IICS 2020

@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p A College-Level Introduction to Computer Science
+  div.container  
+    main(role='main')
+          .jumbotron
+            h2.display-4 A College-Level Introduction to Computing
+            p.lead 
+              | A brief description of the course
+            p
+              a.btn.btn-lg.btn-success(href='/class', role='button') Sign up today
