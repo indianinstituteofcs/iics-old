@@ -8,7 +8,7 @@ html
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
     
     div    
-      nav.navbar.navbar-expand-lg.navbar-light.bg-white
+      nav.navbar.navbar-expand-sm.navbar-light.bg-white
         a(href="/") 
           img.navbar-brand(src="images/Logo.png" width="200px;")
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbar', aria-controls='navbar', aria-expanded='false', aria-label='Toggle navigation')
@@ -16,11 +16,11 @@ html
 
         #navbar.collapse.navbar-collapse
           ul.navbar-nav.mr-auto 
-            li.nav-item.active.m-1
-              a.btn.btn-outline-dark.nav-link(href='/class') The Class
-            li.nav-item.active.m-1
+            li.nav-item.active
+              a.nav-link(href='/class') The Class
+            li.nav-item.active
               a.btn.btn-outline-dark.nav-link(href='#') Register
-          ul.navbar-nav.active.m-1
+          ul.navbar-nav.active
             li.nav-item.active
                a.btn.btn-light.nav-link(href='/login') Login
 
