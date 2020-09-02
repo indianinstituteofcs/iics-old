@@ -12,7 +12,7 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  parent: {
+  parent_email: {
     type: String,
     required: true
   }
