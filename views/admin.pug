@@ -1,0 +1,31 @@
+extends layout
+
+block content 
+  .container
+    h3 Admin Console
+    form(class="form" method="POST" action="/users/register")
+                    #error
+                        if error
+                            p.text-danger There has been an error. Please refresh and try again.
+                    - var h4Classes = ['h4', 'mb-3', 'font-weight-normal', 'text-dark']
+                    h4(class=h4Classes) Register a student
+            
+                    //-input name
+                    label( for="student-name" class="sr-only") Student Name
+                    input(type="student-name" name="student-name" id="student-name" class="form-control m-3 mr-2" placeholder="Enter student name" required autofocus)
+            
+                    //-input email
+                    label(for="student-email" class="sr-only") Student Email
+                    input(type="student-email" name="student-email" id="student-email" class="form-control m-3" placeholder="Enter student email" required)
+
+                    //-input parent name
+                    label(for="parent-name" class="sr-only") Parent Name
+                    input(type="parent-name" name="parent-name" id="parent-name" class="form-control m-3" placeholder="Enter parent name" required)
+
+                    //-input parent email
+                    label(for="parent-email" class="sr-only") Parent Email
+                    input(type="parent-email" name="parent-email" id="parent-name" class="form-control m-3" placeholder="Enter parent email" required)
+
+                    //-signIn button
+                    - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block', 'm-3'];
+                    button(class=buttonClass type="submit") Create Profiles
