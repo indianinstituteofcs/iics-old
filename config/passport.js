@@ -10,6 +10,7 @@ module.exports = function (passport) {
     }, (email, password, done) => {
       //match user
       Student.findOne({
+
           email: email
         })
         .then((user) => {

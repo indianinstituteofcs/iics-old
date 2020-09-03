@@ -5,7 +5,10 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var passport = require('passport');
 
+require("./config/passport")(passport)
 // mongoose 
 mongoose.connect('mongodb://localhost/test', {
     useNewUrlParser: true,
@@ -32,6 +35,16 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: false
 }));
+
+// express session 
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

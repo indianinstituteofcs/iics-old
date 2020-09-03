@@ -84,7 +84,12 @@ router.post('/register', (req, res) => {
     })
   }
 })
-router.post('/login', (req, res, next) => {})
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/',
+  })(req, res, next);
+})
 
 //logout
 router.get('/logout', (req, res) => {})
