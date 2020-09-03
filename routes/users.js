@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Student = require("../models/student.js")
 const Parent = require("../models/parent.js")
+const bcrypt = require('bcrypt');
+const passport = require('passport');
 
 //login handle
 router.get('/login', (req, res) => {
@@ -29,7 +31,7 @@ router.post('/register', (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render('admin', {
+    res.render('/', {
       errors: errors,
       student_name: student_name,
       student_email: student_email,
@@ -47,7 +49,7 @@ router.post('/register', (req, res) => {
         errors.push({
           msg: 'student already registered'
         });
-        render(res, errors, student_name, student_email, password);
+        res.render(res, errors, student_name, student_email, password);
       } else {
         const newStudent = new Student({
           name: student_name,
