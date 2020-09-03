@@ -6,14 +6,26 @@ const Parent = require("../models/parent");
 module.exports = function(passport){
   passport.use(new LocalStrategy(
     function(username, password, done) {
-      console.log("JCTest");
-      /*
+      console.log("JCTest in passport");
+      
       Student.findOne({ username: username }, function (err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
+        console.log("username: ", username); 
+        console.log("password: ", password); 
+        if (err) { 
+          console.log("findOne gave error"); 
+          return done(err); 
+        }
+        if (!user) { 
+          console.log("user is null"); 
+          return done(null, false); 
+        }
+        if (!user.verifyPassword(password)) { 
+          console.log("User is valid but password is bad"); 
+          return done(null, false); 
+        }
+        console.log("valid user and password"); 
         return done(null, user);
-      });*/
+      });
     }
   ));
 };
