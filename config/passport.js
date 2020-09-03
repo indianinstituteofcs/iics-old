@@ -12,30 +12,42 @@ module.exports = function(passport){
         console.log("username: ", username); 
         console.log("password: ", password); 
         if (err) { 
-          console.log("findOne gave error"); 
+          console.log("Username database lookup error"); 
           return done(err); 
         }
         if (!user) { 
-          console.log("user is null"); 
+          console.log("username: ", username, "is not registered"); 
           return done(null, false); 
         }
-        if (!user.verifyPassword(password)) { 
-          console.log("User is valid but password is bad"); 
-          return done(null, false); 
-        }
-        console.log("valid user and password"); 
-        return done(null, user);
+        bcrypt.compare(password, user.password, (err,isMatch)=>{
+          if(err) throw err;
+
+          if(isMatch) {
+            console.log("valid user and password"); 
+            return done(null, user);
+          } else {
+            return done(null, false, {message : "Password is incorrect"});
+          }
+        })
       });
     }
   ));
+
+  passport.serializeUser(function (user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function (id, done) {
+    Student.findById(id, function (err, user) {
+      done(err, user);
+    });
+  });
 };
 
 /*
 module.exports = function (passport) {
   passport.use(
-    new LocalStrategy({
-      usernameField: 'email'
-    }, (email, password, done) => {
+    new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
       //match user
       Student.findOne({
           email: email

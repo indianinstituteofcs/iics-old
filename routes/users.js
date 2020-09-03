@@ -47,7 +47,7 @@ router.post('/register', (req, res) => {
       console.log(user);
       if (user) {
         errors.push({
-          msg: 'student already registered'
+          msg: 'Student already registered'
         });
         res.render(res, errors, student_name, student_email, password);
       } else {
@@ -84,10 +84,12 @@ router.post('/register', (req, res) => {
     })
   }
 })
+
 router.post('/login', (req, res, next) => {
+  console.log("JCTest: login script is invoked",req.body);
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/',
+    failureRedirect: '/login',
   })(req, res, next);
 })
 
