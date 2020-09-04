@@ -8,12 +8,12 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  schoolName: { //Should be a dropdown list
-    type: String, 
+  school: { //Should be a dropdown list
+    type: String,
     required: true
   },
   grade: { //Should be a dropdown list
-    type: String, 
+    type: String,
     required: true
   },
   email: { //Serves as username
@@ -28,9 +28,9 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date :{
-    type : Date,
-    default : Date.now
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 const Student = mongoose.model('Student', StudentSchema);

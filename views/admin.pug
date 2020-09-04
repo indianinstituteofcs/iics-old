@@ -4,45 +4,63 @@ block content
   .container
     //h3 Admin Console
     form(class="form" method="POST" action="/users/register")
-                    #error
-                        if error
-                            p.text-danger There has been an error. Please refresh and try again.
-                    - var h3Classes = ['h3', 'mb-4', 'font-weight-normal', 'text-dark']
-                    h3(class=h3Classes) REGISTERATION
+                #error
+                    if error
+                        p.text-danger There has been an error. Please refresh and try again.
+                - var h3Classes = ['h3', 'mb-4', 'font-weight-normal', 'text-dark']
+                h3(class=h3Classes) REGISTRATION
 
-                    h4(class=h4Classes)   &nbsp
-                    - var h4Classes = ['h4', 'mb-3', 'font-weight-normal', 'text-dark']
-                    h4(class=h4Classes) Parent Info
+                h4(class=h4Classes)   &nbsp
+                - var h4Classes = ['h4', 'mb-3', 'font-weight-normal', 'text-dark']
+                h4(class=h4Classes) Parent Info
             
-                    //-input first name
-                    <div>
-                      label(for="parentFirstName" class="mb-0") First Name:
-                      input(type="parentFirstName" name="parentFirstName" id="parentFirstName" class="form-control mb-3" placeholder="Enter first name" required autofocus)
-                    </div>
+                //-input first name
+                label(for="parentFirstName") First Name:
+                input(type="parentFirstName" name="parentFirstName" id="parentFirstName" class="form-control mb-3" required autofocus)
             
-                    //-input last name
-                    label( for="parentLastName" class="mb-0") Family Name:
-                    input(type="parentLastName" name="parentLastName" id="parentLastName" class="form-control mb-3" placeholder="Enter family name" required autofocus)
+                //-input last name
+                label( for="parentLastName") Last Name:
+                input(type="parentLastName" name="parentLastName" id="parentLastName" class="form-control mb-3" required autofocus)
 
-                    //-input relationship
-                    label(for="reln2Students" class="mb-0") Relationship to Student:
-                    input(type="reln2Students" name="reln2Students" id="reln2Students" class="form-control mb-3" placeholder="Enter relationship to student" required)
+                //-input relationship
+                label(for="reln2Students") Relationship to Student:
+                input(type="reln2Students" name="reln2Students" id="reln2Students" class="form-control mb-3" required)
 
-                    //-input email
-                    label(for="parentEmail" class="mb-0") Parent Email:
-                    input(type="parentEmail" name="parentEmail" id="parentEmail" class="form-control mb-3" placeholder="Enter parent email" required)
+                //-input parent email
+                label(for="parentEmail" ) Parent Email:
+                input(type="parentEmail" name="parentEmail" id="parentEmail" class="form-control mb-3" required)
 
-                    //-input password
-                    label(for="parentPassword" class="mb-0") Password:
-                    input(type="parentPassword" name="parentPassword" id="parentPassword" class="form-control mb-3" placeholder="Enter password" required)
+                //-input password
+                label(for="password") Password:
+                input(type="password" name="password" id="password" class="form-control mb-3" required)
 
-                    h4(class=h4Classes)   &nbsp
-                    h4(class=h4Classes) Students Info
+                h4(class=h4Classes) &nbsp
+                h4(class=h4Classes) Student Info
 
-                    //-input email
-                    label(for="student_email" class="mb-0") Student Email:
-                    input(type="student_email" name="student_email" id="student_email" class="form-control mb-3" placeholder="Enter student email" required)
+                //-input student email
+                label(for="studentEmail") Student Email:
+                input(type="studentEmail" name="studentEmail" id="student_email" class="form-control mb-3" required)
 
-                    //-signIn button
-                    - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block', 'm-3'];
-                    button(class=buttonClass type="submit") Create Student and Parent Profiles
+                //-input student first name
+                label(for="studentFirstName") Student First Name:
+                input(type="studentFirstName" name="studentFirstName" id="studentFirstName" class="form-control mb-3" required)
+
+                //-input student last name
+                label(for="studentLastName") Student Last Name:
+                input(type="studentLastName" name="studentLastName" id="studentLastName" class="form-control mb-3" required)
+                
+                //-input student grade
+                label(for="grade") Grade:
+                input(type="grade" name="grade" id="grade" class="form-control mb-3" required)
+
+                //-input student school
+                label(for="school") High School:
+                input(type="school" name="school" id="school" class="form-control mb-3" required)
+                
+                //-signIn button
+                - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block'];
+                button(class=buttonClass type="submit") Create Student and Parent Profiles
+
+                //-create another button
+                - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+                button(class=buttonClass type="submit") Add Another Student

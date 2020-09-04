@@ -15,52 +15,69 @@ router.get('/register', (req, res) => {
 //Register handle
 router.post('/register', (req, res) => {
   const {
-    student_name,
-    student_email,
-    parent_name,
-    parent_email,
-    password
+    studentFirstName,
+    studentLastName,
+    school,
+    grade,
+    parentFirstName,
+    parentLastName,
+    reln2Students,
+    parentEmail,
+    password,
+    studentEmail
   } = req.body;
   let errors = [];
-  console.log(' Student Name ' + student_name + ' parent_email :' + parent_email + ' pass:' + password);
+  console.log(' parentEmail:' + parentEmail + ' pass:' + password);
 
-  if (!student_name || !student_email || !parent_name || !parent_email || !password) {
+  if (!parentFirstName || !parentLastName || !reln2Students || !parentEmail || !password || !studentEmail) {
     errors.push({
       msg: "Please fill in all fields"
     })
   }
 
   if (errors.length > 0) {
-    res.render('/', {
+    res.render('/login', {
       errors: errors,
-      student_name: student_name,
-      student_email: student_email,
-      parent_name: parent_name,
-      parent_email: parent_email,
-      password: password
+      parentFirstName: parentFirstName,
+      parentLastName: parentLastName,
+      reln2Students: reln2Students,
+      parentEmail: parentEmail,
+      password: password,
+      studentEmail: studentEmail,
+      studentFirstName: studentFirstName,
+      studentLastName: studentLastName,
+      grade: grade,
+      school: school
     })
   } else {
     // check if student exists 
     Student.findOne({
-      email: student_email
+      email: studentEmail
     }).exec((err, user) => {
       console.log(user);
       if (user) {
         errors.push({
           msg: 'Student already registered'
         });
-        res.render(res, errors, student_name, student_email, password);
+        res.render(res, errors, studentEmail, parentEmail);
       } else {
         const newStudent = new Student({
-          name: student_name,
-          email: student_email,
+          studentFirstName: studentFirstName,
+          studentLastName: studentLastName,
+          email: studentEmail,
+          school: school,
+          grade: grade,
           password: password,
-          parent_email: parent_email
+          parentEmail: parentEmail,
+
         });
         const newParent = new Parent({
-          name: parent_name,
-          email: parent_email,
-          password: password,
+          parentFirstName: parentFirstName,
+          parentLastName: parentLastName,
+          parentEmail: parentEmail,
+          studentEmail: studentEmail,
+          reln2Students: reln2Students,
+          password: password
         });
 
         // hash password
@@ -86,7 +103,7 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res, next) => {
-  console.log("JCTest: login script is invoked",req.body);
+  console.log("JCTest: login script is invoked", req.body);
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',
