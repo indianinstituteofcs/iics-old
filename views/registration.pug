@@ -1,0 +1,40 @@
+extends layout
+
+block content 
+  .container
+    form(class="form" method="POST" action="/users/completeRegistration")
+      #error
+        if error
+          p.text-danger There has been an error. Please refresh and try again.
+                
+      - var h4Classes = ['h4', 'mb-4', 'font-weight-normal', 'text-dark']
+      h4(class=h3Classes) PARENT REGISTRATION
+
+      //-input first name
+      label(for="parentFirstName") First Name:
+      input(type="parentFirstName" name=username id="parentFirstName" class="form-control mb-3" placeholder="First name" required autofocus)
+            
+      //-input last name
+      label( for="parentLastName") Last Name:
+      input(type="parentLastName" name="parentLastName" id="parentLastName" class="form-control mb-3" placeholder="Last name" required)
+
+      //-input parent email
+      label(for="parentEmail" ) Parent Email:
+      input(type="parentEmail" name="parentEmail" id="parentEmail" class="form-control mb-3" value=$email required)
+
+      //-input parent email confirmation
+      label(for="parentEmailConfirmation" ) Parent Email (Re-type to confirm):
+      input(type="parentEmailConfirmation" name="parentEmailConfirmation" id="parentEmailConfirmation" class="form-control mb-3" placeholder="Email confirmation" required)
+
+      //-input password
+      label(for="parentPassword") Password (at least 8 characters):
+      input(type="parentPassword" name="parentPassword" id="parentPassword" class="form-control mb-3" placeholder="Password" required)
+
+      //-input password
+      label(for="parentPasswordConfirm") Password (Re-type to confirm):
+      input(type="parentPasswordConfirm" name="parentPasswordConfirm" id="parentPasswordConfirm" class="form-control mb-3" placeholder="Password Confirmation" required)
+
+      //-signIn button
+      - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block'];
+      button(class=buttonClass type="submit") Register
+  

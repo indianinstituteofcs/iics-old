@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET admin page. */
 router.get('/', function (req, res, next) {
-  res.render('admin', {
-    title: 'IICS'
+  res.render('registration', {
+    title: 'IICS:Register'
   });
 });
 

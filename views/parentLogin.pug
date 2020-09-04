@@ -3,7 +3,7 @@ extends layout
 block content
     div.container.text-center
         .col-100
-            form(class="form-signin" method="POST" action="/")
+            form(class="form-signin" method="POST" action="/users/parentRegistration")
                 #error
                     if error
                         p.text-danger There has been an error. Please refresh and try again.

@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET class page. */
 router.get('/', function(req, res, next) {
-  res.render('class', { title: 'IICS:Class' });
+  res.render('about', { title: 'IICS:About' });
 });
 
 module.exports = router;
