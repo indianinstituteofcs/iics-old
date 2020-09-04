@@ -22,24 +22,32 @@ block content
                 label( for="parentLastName") Last Name:
                 input(type="parentLastName" name="parentLastName" id="parentLastName" class="form-control mb-3" required autofocus)
 
-                //-input relationship
-                label(for="reln2Students") Relationship to Student:
-                input(type="reln2Students" name="reln2Students" id="reln2Students" class="form-control mb-3" required)
-
                 //-input parent email
                 label(for="parentEmail" ) Parent Email:
                 input(type="parentEmail" name="parentEmail" id="parentEmail" class="form-control mb-3" required)
 
+                //-input parent email
+                label(for="parentEmailConfirmation" ) Parent Email (Re-type to confirm):
+                input(type="parentEmailConfirmation" name="parentEmailConfirmation" id="parentEmailConfirmation" class="form-control mb-3" required)
+
                 //-input password
-                label(for="password") Password:
-                input(type="password" name="password" id="password" class="form-control mb-3" required)
+                label(for="parentPassword") Password (at least 8 characters):
+                input(type="parentPassword" name="parentPassword" id="parentPassword" class="form-control mb-3" required)
+
+                //-input password
+                label(for="parentPasswordConfirm") Password (Re-type to confirm):
+                input(type="parentPasswordConfirm" name="parentPasswordConfirm" id="parentPasswordConfirm" class="form-control mb-3" required)
+
+                //-signIn button
+                - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block'];
+                button(class=buttonClass type="submit") Register
+
+                - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block'];
+                button(class=buttonClass type="submit") Login (if already Registered)
+  //
 
                 h4(class=h4Classes) &nbsp
                 h4(class=h4Classes) Student Info
-
-                //-input student email
-                label(for="studentEmail") Student Email:
-                input(type="studentEmail" name="studentEmail" id="student_email" class="form-control mb-3" required)
 
                 //-input student first name
                 label(for="studentFirstName") Student First Name:
@@ -49,13 +57,17 @@ block content
                 label(for="studentLastName") Student Last Name:
                 input(type="studentLastName" name="studentLastName" id="studentLastName" class="form-control mb-3" required)
                 
+                //-input student email
+                label(for="studentEmail") Student Email:
+                input(type="studentEmail" name="studentEmail" id="studentEmail" class="form-control mb-3" required)
+
                 //-input student grade
-                label(for="grade") Grade:
-                input(type="grade" name="grade" id="grade" class="form-control mb-3" required)
+                label(for="studentGrade") Grade:
+                input(type="studentGrade" name="studentGrade" id="studentGrade" class="form-control mb-3" required)
 
                 //-input student school
-                label(for="school") High School:
-                input(type="school" name="school" id="school" class="form-control mb-3" required)
+                label(for="studentSchool") High School:
+                input(type="studentSchool" name="studentSchool" id="studentSchool" class="form-control mb-3" required)
                 
                 //-signIn button
                 - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block'];
@@ -64,3 +76,4 @@ block content
                 //-create another button
                 - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
                 button(class=buttonClass type="submit") Add Another Student
+                

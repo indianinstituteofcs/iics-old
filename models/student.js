@@ -8,27 +8,23 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  school: { //Should be a dropdown list
+  studentSchool: { //Should be a dropdown list
     type: String,
     required: true
   },
-  grade: { //Should be a dropdown list
+  studentGrade: { //Should be a dropdown list
     type: String,
     required: true
   },
-  email: { //Serves as username
+  studentEmail: { //Serves as username
     type: String,
     required: true
   },
-  password: { //Will be created by admin
+  studentParentEmail: {
     type: String,
-    required: true
+    required: false
   },
-  parentEmail: {
-    type: String,
-    required: true
-  },
-  date: {
+  studentDateAdded: {
     type: Date,
     default: Date.now
   }

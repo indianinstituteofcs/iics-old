@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost/test', {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var classRouter = require('./routes/class');
-var loginRouter = require('./routes/login');
+var parentLoginRouter = require('./routes/parentLogin');
 var adminRouter = require('./routes/admin');
 
 var app = express();
@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/class', classRouter);
-app.use('/login', loginRouter);
+app.use('/parentLogin', parentLoginRouter);
 app.use('/admin', adminRouter);
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));

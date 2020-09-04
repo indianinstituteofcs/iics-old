@@ -5,9 +5,9 @@ const Parent = require("../models/parent.js")
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
-//login handle
-router.get('/login', (req, res) => {
-  res.render('login');
+//parentLogin handle
+router.get('/parentLogin', (req, res) => {
+  res.render('parentLogin');
 })
 router.get('/register', (req, res) => {
   res.render('register')
@@ -15,85 +15,60 @@ router.get('/register', (req, res) => {
 //Register handle
 router.post('/register', (req, res) => {
   const {
-    studentFirstName,
-    studentLastName,
-    school,
-    grade,
     parentFirstName,
     parentLastName,
-    reln2Students,
     parentEmail,
-    password,
-    studentEmail
+    parentEmailConfirmation,
+    parentPassword,
+    parentPasswordConfirm
   } = req.body;
   let errors = [];
-  console.log(' parentEmail:' + parentEmail + ' pass:' + password);
+  console.log(' parentEmail:' + parentEmail + ' pass:' + parentPassword);
 
-  if (!parentFirstName || !parentLastName || !reln2Students || !parentEmail || !password || !studentEmail) {
+  if (!parentFirstName || !parentLastName || !parentEmail || !parentEmailConfirmation || !parentPassword || !parentPasswordConfirm) {
     errors.push({
       msg: "Please fill in all fields"
     })
   }
 
   if (errors.length > 0) {
-    res.render('/login', {
+    res.render('/parentLogin', {
       errors: errors,
       parentFirstName: parentFirstName,
       parentLastName: parentLastName,
-      reln2Students: reln2Students,
       parentEmail: parentEmail,
-      password: password,
-      studentEmail: studentEmail,
-      studentFirstName: studentFirstName,
-      studentLastName: studentLastName,
-      grade: grade,
-      school: school
+      parentEmailConfirmation:parentEmailConfirmation,
+      parentPassword: parentPassword,
+      parentPasswordConfirm: parentPasswordConfirm
     })
   } else {
-    // check if student exists 
-    Student.findOne({
-      email: studentEmail
-    }).exec((err, user) => {
+    // check if parent exists 
+    Parent.findOne({parentEmail: parentEmail}).exec((err, user) => {
       console.log(user);
+
       if (user) {
         errors.push({
-          msg: 'Student already registered'
+          msg: 'Parent already registered'
         });
-        res.render(res, errors, studentEmail, parentEmail);
+        res.render(res, errors, parentEmail);
       } else {
-        const newStudent = new Student({
-          studentFirstName: studentFirstName,
-          studentLastName: studentLastName,
-          email: studentEmail,
-          school: school,
-          grade: grade,
-          password: password,
-          parentEmail: parentEmail,
-
-        });
         const newParent = new Parent({
           parentFirstName: parentFirstName,
           parentLastName: parentLastName,
           parentEmail: parentEmail,
-          studentEmail: studentEmail,
-          reln2Students: reln2Students,
-          password: password
-        });
+          parentEmailConfirmation:parentEmailConfirmation,
+          parentPassword: parentPassword,
+          parentPasswordConfirm: parentPasswordConfirm
+            });
 
         // hash password
         bcrypt.genSalt(10, (err, salt) =>
-          bcrypt.hash(newStudent.password, salt,
-            (err, hash) => {
+          bcrypt.hash(newParent.parentPassword, salt, (err, hash) => {
               if (err) throw err;
-              newStudent.password = hash;
-              newParent.password = hash;
-              newStudent.save().then((value) => {
-                console.log(value)
-                res.redirect('/users/login');
-              }).catch(value => console.log(value));
+              newParent.parentPassword = hash;
               newParent.save().then((value) => {
                 console.log(value)
-                res.redirect('/users/login');
+                res.redirect('/'); //Should go to enroll page.
               }).catch(value => console.log(value));
             })
         )
@@ -102,11 +77,11 @@ router.post('/register', (req, res) => {
   }
 })
 
-router.post('/login', (req, res, next) => {
-  console.log("JCTest: login script is invoked", req.body);
+router.post('/parentLogin', (req, res, next) => {
+  console.log("JCTest: parentLogin script is invoked", req.body);
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/login',
+    failureRedirect: '/parentLogin',
   })(req, res, next);
 })
 

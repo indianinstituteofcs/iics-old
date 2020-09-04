@@ -10,20 +10,29 @@ const ParentSchema = new mongoose.Schema({
   },
   studentEmail: { // Can this be a list?
     type: String,
-    required: true
+    required: false
   },
   parentEmail: {
     type: String,
     required: true
   },
-  reln2Students: {
-    type: String, //Dropdown list. Father, Mother, Legal Guardian
+  parentEmailConfirmation: {
+    type: String,
     required: true
   },
   parentPassword: {
     type: String,
     required: true
+  },
+  parentPasswordConfirm: {
+    type: String,
+    required: true
+  },
+  parentDateAdded: {
+    type: Date,
+    default: Date.now
   }
+
 });
 const Parent = mongoose.model('Parent', ParentSchema);
 

@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Indian Institute of Computational Science' });
+  console.log("JCTest: Inside router for login");
+  res.render('parentLogin', {title: "XXX"});
 });
 
 module.exports = router;
