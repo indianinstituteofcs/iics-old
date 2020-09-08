@@ -4,7 +4,6 @@ const Student = require("../models/student.js")
 const Parent = require("../models/parent.js")
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const currentParent = "";
 
 //parentLogin handle
 router.get('/parentLogin', (req, res) => {
@@ -36,7 +35,7 @@ router.post('/parentRegistration', (req, res) => {
   } else {
     // check if parent exists 
     Parent.findOne({parentEmail: username}).exec((err, user) => {
-      console.log(user);
+      console.log("User from database: " + user);
 
       if (user) {
         errors.push({
@@ -45,8 +44,7 @@ router.post('/parentRegistration', (req, res) => {
         res.render(res, errors, username);
       } else {
         console.log('JCTest:parentRegistration: User does not exist in database. To registration:' + username);
-        currentParent = username;
-        res.redirect('/registration'); //Go to registration page to complete.
+        res.render('registration', { currentParent: username }); //Go to registration page to complete.
       }
     })
   }
