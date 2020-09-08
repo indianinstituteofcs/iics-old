@@ -15,7 +15,7 @@ block content
             
                         //-signIn button
                         div.input-group-btn
-                            - var buttonClass=['btn', 'btn-md', 'btn-info', 'mb-3'];
+                            - var buttonClass=['btn', 'btn-md', 'btn-info', 'mb-3', 'ml-2'];
                             button(class=buttonClass type="submit") JOIN
                 
             h6 &nbsp
@@ -35,9 +35,10 @@ block content
                 label(for="inputPassword" class="sr-only") Password
                 input(type="password" name="password" id="inputPassword" class="form-control mb-3" placeholder="Password" required)
 
-                div.input-group
+                - var divClasses0=['input-group'];
+                div(class=divClasses0)
                     //-remember Checkbox
-                    - var divClasses=['checkbox', 'mb-3'];
+                    - var divClasses=['checkbox', 'mt-3'];
                     div(class=divClasses)
                         label
                             input(type="checkbox" value="remember-me")
@@ -45,5 +46,5 @@ block content
 
                     //-signIn button
                     div.input-group-btn
-                        - var buttonClass=['btn', 'btn-md', 'btn-info', 'mb-3'];
+                        - var buttonClass=['btn', 'btn-md', 'btn-info', 'mt-2', 'ml-2'];
                         button(class=buttonClass type="submit") LOG IN
