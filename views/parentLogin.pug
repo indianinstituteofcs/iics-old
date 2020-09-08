@@ -8,13 +8,15 @@ block content
                     if error
                         p.text-danger There has been an error. Please refresh and try again.
 
-                //-input email
                 label( for="inputEmail" class="mb-1 h5") New to IICS? Register Please
-                input(type="email" name="username" id="inputEmail" class="form-control mb-3" placeholder="Email address" required)
+                div.input-group
+                        //-input email
+                        input(type="email" name="username" id="inputEmail" class="form-control mb-3" placeholder="Email address" required)
             
-                //-signIn button
-                - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block', 'mb-3'];
-                button(class=buttonClass type="submit") JOIN
+                        //-signIn button
+                        div.input-group-btn
+                            - var buttonClass=['btn', 'btn-md', 'btn-info', 'mb-3'];
+                            button(class=buttonClass type="submit") JOIN
                 
             h6 &nbsp
             <hr style="width:100%;text-align:center;border-width:2px;border-color:#234234;">
@@ -33,13 +35,15 @@ block content
                 label(for="inputPassword" class="sr-only") Password
                 input(type="password" name="password" id="inputPassword" class="form-control mb-3" placeholder="Password" required)
 
-                //-remember Checkbox
-                - var divClasses=['checkbox', 'mb-3'];
-                div(class=divClasses)
-                    label
-                        input(type="checkbox" value="remember-me")
-                        span.m-2 Remember me
+                div.input-group
+                    //-remember Checkbox
+                    - var divClasses=['checkbox', 'mb-3'];
+                    div(class=divClasses)
+                        label
+                            input(type="checkbox" value="remember-me")
+                            span.m-2 Remember me
 
                     //-signIn button
-                - var buttonClass=['btn', 'btn-lg', 'btn-info', 'btn-block', 'mb-3'];
-                 button(class=buttonClass type="submit") LOG IN
+                    div.input-group-btn
+                        - var buttonClass=['btn', 'btn-md', 'btn-info', 'mb-3'];
+                        button(class=buttonClass type="submit") LOG IN
