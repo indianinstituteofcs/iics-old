@@ -3,7 +3,7 @@ extends layout
 block content
     div.container.text-center
         .col-100
-            form(class="form-signin" method="POST" action="/users/parentRegistration")
+            form(class="form-signin" method="POST" action="/parent-registration/parentEmailCheck")
                 #error
                     if error
                         p.text-danger There has been an error. Please refresh and try again.
@@ -35,9 +35,8 @@ block content
                 label(for="inputPassword" class="sr-only") Password
                 input(type="password" name="password" id="inputPassword" class="form-control mb-3" placeholder="Password" required)
 
-                - var divClasses0=['input-group'];
+                - var divClasses0=['input-group','mb-5'];
                 div(class=divClasses0)
-                    //-remember Checkbox
                     - var divClasses=['checkbox', 'mt-3'];
                     div(class=divClasses)
                         label
