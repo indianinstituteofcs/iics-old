@@ -9,7 +9,7 @@ const passport = require('passport');
 /* GET login page. */
 router.get('/', function(req, res, next) {
   console.log("JCTest: Inside router for login");
-  res.render('parentLogin', {title: "IICS:Login"});
+  res.render('parent-account', {title: "IICS:Login"});
 });
 
 

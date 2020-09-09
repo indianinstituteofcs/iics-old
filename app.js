@@ -22,7 +22,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var classRouter = require('./routes/class');
 var aboutRouter = require('./routes/about');
-var parentLoginRouter = require('./routes/parentLogin');
+var parentAccountRouter = require('./routes/parent-account');
 var parentRegistrationRouter = require('./routes/parent-registration');
 
 var app = express();
@@ -53,7 +53,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/class', classRouter);
 app.use('/about', aboutRouter);
-app.use('/parentLogin', parentLoginRouter);
+app.use('/parent-account', parentAccountRouter);
 app.use('/parent-registration', parentRegistrationRouter);
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
