@@ -12,6 +12,10 @@ router.get('/', function(req, res, next) {
   res.render('parent-account', {title: "IICS:Login"});
 });
 
+router.get('/parentEmailCheck', (req, res) => {
+  res.render('/')
+})
+
 //Register handle
 router.post('/parentEmailCheck', (req, res) => {
   const {
